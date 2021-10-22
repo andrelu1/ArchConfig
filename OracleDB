@@ -1,0 +1,16 @@
+On Arch
+
+yay oracle-xe
+
+su -s /bin/bash oracle -c '/opt/oracle/product/18c/dbhomeXE/bin/dbca -silent \ 
+-createDatabase -gdbName XE -templateName XE_Database.dbc -characterSet AL32UTF8 \
+-createAsContainerDatabase true -numberOfPDBs 1 -sid XE -pdbName XEPDB1 \
+-J-Doracle.assistants.dbca.validate.ConfigurationParams=false -emConfiguration DBEXPRESS \
+-emExpressPort 5500 -J-Doracle.assistants.dbca.validate.DBCredentials=false -sampleSchema true \
+-customScripts /opt/oracle/product/18c/dbhomeXE/assistants/dbca/postdb_creation.sql'
+
+chmod -R u+s,g+s /opt/oracle/product/18c/dbhomeXE/bin/sqlplus
+
+sqlplus 'sys/sys sysdba'
+
+Startup
